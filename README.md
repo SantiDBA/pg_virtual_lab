@@ -26,7 +26,8 @@ If you want to stop the data loading, please run this in your installation direc
 
 ## Requirements
 
-Install Virtualbox for your machine from: https://www.virtualbox.org/wiki/Downloads
+1. Install Virtualbox for your machine from: https://www.virtualbox.org/wiki/Downloads
+2. Install Vagrant in your computer: https://developer.hashicorp.com/vagrant/install?product_intent=vagrant
 
 ## Setup
 
