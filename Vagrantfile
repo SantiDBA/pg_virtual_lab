@@ -1,13 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require 'yaml'
 
 # Variables
-var_box            = 'oraclebase/oracle-8'
-var_vm_name        = 'pg_santilab'
-var_mem_size       = 2048
-var_cpus           = 1
-var_non_rotational = 'on' # SSD
-var_public_ip      = '192.168.56.140'
+params = YAML.load_file 'config/vagrant.yml'
+var_box            = params['box']
+var_vm_name        = params['vm_name']
+var_mem_size       = params['mem_size']
+var_cpus           = params['cpus']
+var_public_ip      = params['public_ip']
+var_non_rotational = params['non_rotational']
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -31,10 +33,10 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
-  config.vm.network "forwarded_port", guest: 8443, host: 8443
-  config.vm.network "forwarded_port", guest: 1521, host: 1521
-  config.vm.network "forwarded_port", guest: 5500, host: 5500
+  #config.vm.network "forwarded_port", guest: 8080, host: 8080
+  #config.vm.network "forwarded_port", guest: 8443, host: 8443
+  #config.vm.network "forwarded_port", guest: 1521, host: 1521
+  #config.vm.network "forwarded_port", guest: 5500, host: 5500
   config.vm.network "forwarded_port", guest: 5432, host: 15432
 
   # Create a forwarded port mapping which allows access to a specific port
@@ -49,7 +51,7 @@ Vagrant.configure("2") do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  # config.vm.network "public_network"
+  #config.vm.network "public_network"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is

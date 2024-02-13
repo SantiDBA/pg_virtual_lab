@@ -9,8 +9,8 @@ echo "**************************************************************************
 echo "Install Oracle prerequisite package." `date`
 echo "Not necessary, but oracle OS user has no home directory if this is not run first."
 echo "******************************************************************************"
-dnf install -y oraclelinux-developer-release-el8
-dnf install -y oracle-database-preinstall-23c
+#dnf install -y oraclelinux-developer-release-el8
+#dnf install -y oracle-database-preinstall-23c
 
 echo "******************************************************************************"
 echo "Install Oracle RPM." `date`
@@ -25,6 +25,9 @@ dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_6
 dnf -qy module disable postgresql
 dnf install -y postgresql15-server
 /usr/pgsql-15/bin/postgresql-15-setup initdb
+echo "listen_addresses = '*'" >> /var/lib/pgsql/15/data/postgresql.conf
+echo "host    all             all             samenet           scram-sha-256" >> /var/lib/pgsql/15/data/pg_hba.conf
+systemctl start postgresql-15
 
 echo "******************************************************************************"
 echo "Firewall." `date`

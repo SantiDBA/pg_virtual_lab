@@ -12,3 +12,5 @@ sh /vagrant/scripts/install_os_packages.sh
 #su - oracle -c 'sh /vagrant/scripts/ords_software_installation.sh'
 
 #sh /vagrant/scripts/oracle_service_setup.sh
+
+su - postgres -c 'sh /vagrant/scripts/setup_postgres.sh'
