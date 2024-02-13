@@ -1,6 +1,18 @@
 # pg_santilab
 Personal Vagrant PostgreSQL Lab
 
+Using Vagrant, we will create a VirtualBox machine running Oracle Linux and PostgreSQL.
+After installation, you will have a PostgreSQL DB available for playing/learning.
+By default, there will be a pgbench process generating loading against Postgres:
+
+    pgbench -s 100 -c 10 -T 999999999 mytestdb
+
+If you want to stop the data loading, please run this in your installation directory:
+
+    vagrant ssh
+    sudo pkill pgbench
+    exit
+
 Requirements
 
 Install Virtualbox for your machine from: https://www.virtualbox.org/wiki/Downloads
