@@ -1,5 +1,5 @@
 # pg_virtual_lab
-Personal Vagrant PostgreSQL Laboratory
+## Personal Vagrant PostgreSQL Laboratory
 
 ## Table of contents
 * [General info](#general-info)
