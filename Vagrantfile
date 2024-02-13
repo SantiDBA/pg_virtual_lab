@@ -4,8 +4,8 @@
 # Variables
 var_box            = 'oraclebase/oracle-8'
 var_vm_name        = 'pg_santilab'
-var_mem_size       = 4096
-var_cpus           = 2
+var_mem_size       = 2048
+var_cpus           = 1
 var_non_rotational = 'on' # SSD
 var_public_ip      = '192.168.56.140'
 
