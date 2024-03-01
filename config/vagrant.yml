@@ -1,6 +1,6 @@
 box: oraclebase/oracle-8
 vm_name: pg_santilab
-mem_size: 1024
+mem_size: 2048
 cpus: 1
 public_ip: 192.168.56.140
 disk1_name: ./ol8_21_u01.vdi
