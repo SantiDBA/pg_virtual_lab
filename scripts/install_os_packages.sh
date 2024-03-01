@@ -9,8 +9,8 @@ echo "**************************************************************************
 echo "Install Oracle prerequisite package." `date`
 echo "Not necessary, but oracle OS user has no home directory if this is not run first."
 echo "******************************************************************************"
-#dnf install -y oraclelinux-developer-release-el8
-#dnf install -y oracle-database-preinstall-23c
+dnf install -y oraclelinux-developer-release-el8
+dnf install -y oracle-database-preinstall-23c
 
 echo "******************************************************************************"
 echo "Install Oracle RPM." `date`
