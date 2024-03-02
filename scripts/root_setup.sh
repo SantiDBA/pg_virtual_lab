@@ -1,15 +1,17 @@
 . /vagrant/config/install.env
 
-sh /vagrant/scripts/install_os_packages.sh
-
 mkdir -p ${SOFTWARE_DIR}
 chown -R oracle:oinstall /u01
 
-## Postgres Installation
-su - postgres -c 'sh /vagrant/scripts/setup_postgres.sh'
-
 ## Oracle Installation
 sudo bash -c 'sh /vagrant/scripts/setup_oracle.sh'
+
+## Postgres packages
+sh /vagrant/scripts/install_os_packages.sh
+
+## Postgres Setup
+su - postgres -c 'sh /vagrant/scripts/setup_postgres.sh'
+
 
 ##echo "******************************************************************************"
 ##echo " Download Oracle 23c free binaries" `date`
