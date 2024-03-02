@@ -9,7 +9,7 @@ chown -R oracle:oinstall /u01
 su - postgres -c 'sh /vagrant/scripts/setup_postgres.sh'
 
 ## Oracle Installation
-su - oracle -c 'sh /vagrant/scripts/setup_oracle.sh'
+sudo bash -c 'sh /vagrant/scripts/setup_oracle.sh'
 
 ##echo "******************************************************************************"
 ##echo " Download Oracle 23c free binaries" `date`
