@@ -10,6 +10,7 @@ var_mem_size       = params['mem_size']
 var_cpus           = params['cpus']
 var_public_ip      = params['public_ip']
 var_non_rotational = params['non_rotational']
+var_hostname       = params['hostname']
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -52,6 +53,9 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   #config.vm.network "public_network"
+
+  # Setup hostname on the VM
+  config.vm.hostname = var_hostname
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is

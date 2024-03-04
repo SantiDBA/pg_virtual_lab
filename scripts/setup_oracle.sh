@@ -140,8 +140,16 @@ echo "ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: $ORACLE_PWD"
 
 echo 'INSTALLER: Installation complete, database ready to use!'
 
-echo 'Downloading Java 8...'
-wget -P /vagrant https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249541_4d245f941845490c91360409ecffb3b4
+echo 'Downloading JDK 17...'
+wget -P /vagrant https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.rpm
 
-echo 'Installing Java 8...'
-rpm -ivh jre-8u73-linux-x64.rpm
+echo 'Installing JDK 17...'
+sudo rpm -ivh jdk-17_linux-x64_bin.rpm
+
+echo 'Downloading SwingBench...'
+wget -P /home/oracle https://www.dominicgiles.com/site_downloads/swingbenchlatest.zip
+
+echo 'Installing SwingBench...'
+cd /home/oracle
+unzip swingbenchlatest.zip
+/home/oracle/swingbench/bin/oewizard -cl -create -cs //localhost/FREE -u benchmark -p benchmark -scale 50 -tc 32 -dba "sys as sysdba" -dbap oracle -ts +DATA
