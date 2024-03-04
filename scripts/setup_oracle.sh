@@ -86,7 +86,7 @@ chmod o+r /opt/oracle/product/23c/dbhomeFree/network/admin/tnsnames.ora
 cat >> /opt/oracle/product/23c/dbhomeFree/network/admin/tnsnames.ora << EOF
 FREEPDB1 =
   (DESCRIPTION =
-    (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = $LISTENER_PORT))
+    (ADDRESS = (PROTOCOL = TCP)(HOST = $ORACLE_HOSTNAME)(PORT = $LISTENER_PORT))
     (CONNECT_DATA =
       (SERVER = DEDICATED)
       (SERVICE_NAME = FREEPDB1)
@@ -144,12 +144,14 @@ echo 'Downloading JDK 17...'
 wget -P /vagrant https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.rpm
 
 echo 'Installing JDK 17...'
-sudo rpm -ivh jdk-17_linux-x64_bin.rpm
+sudo rpm -ivh /vagrant/jdk-17_linux-x64_bin.rpm
+
+sudo -iu oracle
+cd /home/oracle
 
 echo 'Downloading SwingBench...'
 wget -P /home/oracle https://www.dominicgiles.com/site_downloads/swingbenchlatest.zip
 
 echo 'Installing SwingBench...'
-cd /home/oracle
 unzip swingbenchlatest.zip
-/home/oracle/swingbench/bin/oewizard -cl -create -cs //localhost/FREE -u benchmark -p benchmark -scale 50 -tc 32 -dba "sys as sysdba" -dbap oracle -ts +DATA
+/home/oracle/swingbench/bin/oewizard -cl -create -cs //192.168.56.140/FREEPDB1 -u benchmark -p benchmark -scale 1 -tc 32 -dba "sys as sysdba" -dbap oracle -ts USERS
