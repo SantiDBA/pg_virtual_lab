@@ -139,3 +139,9 @@ echo 'INSTALLER: Done running user-defined post-setup scripts'
 echo "ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: $ORACLE_PWD"
 
 echo 'INSTALLER: Installation complete, database ready to use!'
+
+echo 'Downloading Java 8...'
+wget -P /vagrant https://javadl.oracle.com/webapps/download/AutoDL?BundleId=249541_4d245f941845490c91360409ecffb3b4
+
+echo 'Installing Java 8...'
+rpm -ivh jre-8u73-linux-x64.rpm
