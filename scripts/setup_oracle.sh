@@ -145,13 +145,3 @@ wget -P /vagrant https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin
 
 echo 'Installing JDK 17...'
 sudo rpm -ivh /vagrant/jdk-17_linux-x64_bin.rpm
-
-sudo -iu oracle
-cd /home/oracle
-
-echo 'Downloading SwingBench...'
-wget -P /home/oracle https://www.dominicgiles.com/site_downloads/swingbenchlatest.zip
-
-echo 'Installing SwingBench...'
-unzip swingbenchlatest.zip
-/home/oracle/swingbench/bin/oewizard -cl -create -cs //192.168.56.140/FREEPDB1 -u benchmark -p benchmark -scale 1 -tc 32 -dba "sys as sysdba" -dbap oracle -ts USERS
