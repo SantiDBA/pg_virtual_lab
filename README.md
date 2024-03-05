@@ -36,12 +36,19 @@ If you want to stop the data loading, please run this in your installation direc
 3. Go inside the uncompressed directory.
 4. Create the virtual machine with: `vagrant up`
 5. Connect to the virtual machines using: `vagrant ssh`
-6. Connect to postgres from any IDE (PGAdmin, DBeaver, etc.) using below information:
+6. Connect to Postgres from any IDE (PGAdmin, DBeaver, etc.) using below information:
 
         HOST: 192.168.56.140
         PORT: 5432
         USER: postgres
         PASS: postgres
+
+7. Connect to Oracle from any IDE (TOAD, Dbeaver, etc.) using below information:
+
+        HOST: 192.168.56.140
+        PORT: 1521
+        USER: benchmark
+        PASS: benchmark
 
 Enjoy!
 
