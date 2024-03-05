@@ -43,7 +43,7 @@ If you want to stop the data loading, please run this in your installation direc
         USER: postgres
         PASS: postgres
 
-7. Connect to Oracle from any IDE (TOAD, Dbeaver, etc.) using below information:
+7. Connect to Oracle from any IDE (TOAD, DBeaver, etc.) using below information:
 
         HOST: 192.168.56.140
         PORT: 1521
