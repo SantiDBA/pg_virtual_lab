@@ -1,5 +1,5 @@
 box: oraclebase/oracle-8
-vm_name: pg_santilab
+vm_name: dba_labs
 mem_size: 2048
 cpus: 1
 public_ip: 192.168.56.140
