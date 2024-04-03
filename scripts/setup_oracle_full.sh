@@ -50,7 +50,7 @@ EOF
 
 echo 'INSTALLER: Environment variables set'
 
-# Download Oracle Software
+# Install Oracle
 # if installer doesn't exist, download it
 db_installer='oracle-database-free-23c-1.0-1.el8.x86_64.rpm'
 if [[ ! -f /vagrant/"${db_installer}" ]]; then
@@ -59,10 +59,27 @@ if [[ ! -f /vagrant/"${db_installer}" ]]; then
        https://download.oracle.com/otn-pub/otn_software/db-free/"${db_installer}"
 fi
 
-## Setup tnsnames for future FREE DB
-mkdir -p /opt/oracle/product/23c/dbhomeFree/network/admin
-touch /opt/oracle/product/23c/dbhomeFree/network/admin/tnsnames.ora
-chown oracle:oinstall /opt/oracle/product/23c/dbhomeFree/network/admin/tnsnames.ora
+dnf -y localinstall /vagrant/"${db_installer}"
+
+if [[ "${KEEP_DB_INSTALLER,,}" == 'false' ]]; then
+  rm -f /vagrant/"${db_installer}"
+fi
+
+echo 'INSTALLER: Oracle software installed'
+
+# Auto generate ORACLE PWD if not passed on
+export ORACLE_PWD=${ORACLE_PWD:-"$(openssl rand -base64 8)1"}
+
+# Create database
+mv /etc/sysconfig/oracle-free-23c.conf /etc/sysconfig/oracle-free-23c.conf.original
+cp /vagrant/ora-response/oracle-free-23c.conf.tmpl /etc/sysconfig/oracle-free-23c.conf
+chmod g+w /etc/sysconfig/oracle-free-23c.conf
+
+sed -i -e "s|###LISTENER_PORT###|$LISTENER_PORT|g" /etc/sysconfig/oracle-free-23c.conf
+sed -i -e "s|###ORACLE_CHARACTERSET###|$ORACLE_CHARACTERSET|g" /etc/sysconfig/oracle-free-23c.conf
+sed -i -e "s|###ORACLE_PWD###|$ORACLE_PWD|g" /etc/sysconfig/oracle-free-23c.conf
+/etc/init.d/oracle-free-23c configure
+
 chmod o+r /opt/oracle/product/23c/dbhomeFree/network/admin/tnsnames.ora
 
 # add tnsnames.ora entry for PDB
@@ -77,7 +94,19 @@ FREEPDB1 =
   )
 EOF
 
-echo 'INSTALLER: Database software downloaded'
+echo 'INSTALLER: Database created'
+
+# configure systemd to start Oracle instance on startup
+systemctl daemon-reload
+systemctl enable oracle-free-23c
+systemctl start oracle-free-23c
+echo 'INSTALLER: Created and enabled oracle-free-23c systemd service'
+
+cp /vagrant/scripts/setPassword.sh /home/oracle/
+chown oracle:oinstall /home/oracle/setPassword.sh
+chmod u=rwx,go=r /home/oracle/setPassword.sh
+
+echo 'INSTALLER: setPassword.sh file set up'
 
 # run user-defined post-setup scripts
 echo 'INSTALLER: Running user-defined post-setup scripts'
@@ -106,6 +135,10 @@ for f in /vagrant/userscripts/*
   done
 
 echo 'INSTALLER: Done running user-defined post-setup scripts'
+
+echo "ORACLE PASSWORD FOR SYS, SYSTEM AND PDBADMIN: $ORACLE_PWD"
+
+echo 'INSTALLER: Installation complete, database ready to use!'
 
 echo 'Downloading JDK 17...'
 wget -P /vagrant https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.rpm

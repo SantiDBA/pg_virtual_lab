@@ -14,7 +14,7 @@ EOF
 chown oracle:oinstall /home/oracle/.bashrc
 
 ## Oracle Installation
-##sudo bash -c 'sh /vagrant/scripts/setup_oracle.sh'
+sudo bash -c 'sh /vagrant/scripts/setup_oracle.sh'
 
 ## Postgres packages
 sh /vagrant/scripts/install_os_packages.sh
