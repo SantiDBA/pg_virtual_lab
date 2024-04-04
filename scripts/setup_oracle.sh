@@ -19,9 +19,9 @@ set -Eeuo pipefail
 echo 'INSTALLER: Started up'
 
 # get up to date
-dnf upgrade -y
+#dnf upgrade -y
 
-echo 'INSTALLER: System updated'
+#echo 'INSTALLER: System updated'
 
 # fix locale warning
 dnf reinstall -y glibc-common
