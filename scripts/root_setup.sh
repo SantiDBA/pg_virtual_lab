@@ -20,7 +20,7 @@ sudo bash -c 'sh /vagrant/scripts/setup_oracle.sh'
 sh /vagrant/scripts/install_os_packages.sh
 
 ## Postgres Setup
-su - postgres -c 'sh /vagrant/scripts/setup_postgres.sh'
+##su - postgres -c 'sh /vagrant/scripts/setup_postgres.sh'
 
 ## Swingbench Setup
 su - oracle -c 'sh /vagrant/scripts/setup_swingbench.sh'
