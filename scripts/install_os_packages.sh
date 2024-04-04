@@ -19,17 +19,17 @@ dnf install -y dnf-utils zip unzip
 #dnf update -y
 
 echo "******************************************************************************"
-echo "Install Postgres 15." `date`
+echo " Download Postgres 15." `date`
 echo "******************************************************************************"
 dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 dnf -qy module disable postgresql
-dnf install -y postgresql15-server
-echo "export PATH=\$PATH:/usr/pgsql-15/bin" > /var/lib/pgsql/.pgsql_profile
-/usr/pgsql-15/bin/postgresql-15-setup initdb
-echo "listen_addresses = '*'" >> /var/lib/pgsql/15/data/postgresql.conf
-echo "host    all             all             samenet           scram-sha-256" >> /var/lib/pgsql/15/data/pg_hba.conf
-systemctl enable postgresql-15
-systemctl start postgresql-15
+##dnf install -y postgresql15-server
+##echo "export PATH=\$PATH:/usr/pgsql-15/bin" > /var/lib/pgsql/.pgsql_profile
+##/usr/pgsql-15/bin/postgresql-15-setup initdb
+##echo "listen_addresses = '*'" >> /var/lib/pgsql/15/data/postgresql.conf
+##echo "host    all             all             samenet           scram-sha-256" >> /var/lib/pgsql/15/data/pg_hba.conf
+##systemctl enable postgresql-15
+##systemctl start postgresql-15
 
 echo "******************************************************************************"
 echo "Firewall." `date`
