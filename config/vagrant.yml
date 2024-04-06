@@ -1,4 +1,4 @@
-box: oraclebase/oracle-8
+box: oraclebase/oracle-9
 vm_name: dba_labs
 mem_size: 2048
 cpus: 1
