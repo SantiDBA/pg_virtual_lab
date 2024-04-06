@@ -1,4 +1,4 @@
-. /vagrant/config/install_postgres.env
+. /vagrant/config/install_options.env
 
 echo "******************************************************************************"
 echo "Prepare yum with the latest repos." `date`
