@@ -7,6 +7,11 @@ echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 
 dnf install -y dnf-utils zip unzip
 
+## Create Oracle user
+useradd -m -s /bin/bash oracle
+groupadd oinstall
+usermod -aG oinstall oracle
+
 #echo "******************************************************************************"
 #echo "Install Oracle prerequisite package." `date`
 #echo "Not necessary, but oracle OS user has no home directory if this is not run first."
