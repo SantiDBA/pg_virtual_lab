@@ -35,8 +35,8 @@ timedatectl set-timezone "$SYSTEM_TIMEZONE"
 echo "INSTALLER: System time zone set to $SYSTEM_TIMEZONE"
 
 # Install Oracle Database preinstall and openssl packages
-dnf install -y oraclelinux-developer-release-el8
-dnf install -y oracle-database-preinstall-23c openssl
+#dnf install -y oraclelinux-developer-release-el8
+#dnf install -y oracle-database-preinstall-23c openssl
 
 echo 'INSTALLER: Oracle preinstall and openssl complete'
 
