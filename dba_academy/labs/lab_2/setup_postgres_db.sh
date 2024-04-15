@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo -s
 dnf install -y postgresql15-server
 /usr/pgsql-15/bin/postgresql-15-setup initdb

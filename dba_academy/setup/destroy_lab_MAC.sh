@@ -1,3 +1,4 @@
+#!/bin/bash
 cd pg_virtual_lab-main
 vagrant destroy
 cd ..

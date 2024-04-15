@@ -1,3 +1,4 @@
+#!/bin/bash
 ## Setup tnsnames for future FREE DB
 mkdir -p /opt/oracle/product/23c/dbhomeFree/network/admin
 touch /opt/oracle/product/23c/dbhomeFree/network/admin/tnsnames.ora

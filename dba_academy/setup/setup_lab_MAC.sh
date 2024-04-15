@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Installing VirtualBox..."
 brew install --cask virtualbox
 echo "Installing VirtualBox... DONE"

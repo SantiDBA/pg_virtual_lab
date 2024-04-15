@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo -s
 dnf install -y oraclelinux-developer-release-el8
 dnf -y install oracle-database-preinstall-23c

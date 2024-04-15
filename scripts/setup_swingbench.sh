@@ -1,3 +1,4 @@
+#!/bin/bash
 . /vagrant/config/install_options.env
 
 cd /home/oracle
