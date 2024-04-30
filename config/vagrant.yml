@@ -2,9 +2,10 @@ box: oraclebase/oracle-8
 vm_name: dba_labs
 mem_size: 2048
 cpus: 1
-public_ip: 192.168.56.140
+public_ip1: 192.168.56.140
+public_ip2: 192.168.56.150
 disk1_name: ./ol8_21_u01.vdi
 disk2_name: ./ol8_21_u02.vdi
 non_rotational: 'on'
 disk_size: 100
-hostname: 192.168.56.140
+hostname: pg_node

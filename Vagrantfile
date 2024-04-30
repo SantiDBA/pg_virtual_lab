@@ -8,7 +8,8 @@ var_box            = params['box']
 var_vm_name        = params['vm_name']
 var_mem_size       = params['mem_size']
 var_cpus           = params['cpus']
-var_public_ip      = params['public_ip']
+var_public_ip1     = params['public_ip1']
+var_public_ip2     = params['public_ip2']
 var_non_rotational = params['non_rotational']
 var_hostname       = params['hostname']
 
@@ -36,26 +37,23 @@ Vagrant.configure("2") do |config|
   # NOTE: This will enable public access to the opened port
   #config.vm.network "forwarded_port", guest: 8080, host: 8080
   #config.vm.network "forwarded_port", guest: 8443, host: 8443
-  config.vm.network "forwarded_port", guest: 1521, host: 15021
+  #config.vm.network "forwarded_port", guest: 1521, host: 15021
   #config.vm.network "forwarded_port", guest: 5500, host: 5500
-  config.vm.network "forwarded_port", guest: 5432, host: 15432
+  #config.vm.network "forwarded_port", guest: 5432, host: 15432
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
   # via 127.0.0.1 to disable public access
   # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
 
-  # Create a private network, which allows host-only access to the machine
-  # using a specific IP.
-  config.vm.network "private_network", ip: var_public_ip
+
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
   #config.vm.network "public_network"
 
-  # Setup hostname on the VM
-  config.vm.hostname = var_hostname
+
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -67,13 +65,30 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = var_mem_size
-    vb.cpus   = var_cpus
-    vb.name   = var_vm_name
-    
-    vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', '0', '--nonrotational', var_non_rotational]
-  end
+
+  # Create 2 DB nodes, primary and standby
+      #Primary DB server
+      config.vm.define "primary" do |primary|
+        primary.vm.hostname = "primarydb"
+        #primary.vm.box = var_box
+        primary.vm.network :private_network, ip: var_public_ip1
+      end
+
+      #Standby DB server
+      config.vm.define "standby" do |standby|
+        standby.vm.hostname = "standbydb"
+        #standby.vm.box = var_box
+        standby.vm.network :private_network, ip: var_public_ip2
+      end
+
+      config.vm.provider "virtualbox" do |vb|
+        vb.memory = var_mem_size
+        vb.cpus   = var_cpus
+        #vb.name   = var_vm_name#{i}
+        
+        vb.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', '0', '--nonrotational', var_non_rotational]
+      end
+  
 
   #
   # View the documentation for the provider you are using for more

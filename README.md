@@ -13,7 +13,7 @@ After installation, you will have a PostgreSQL DB available for playing/learning
 By default, there will be a pgbench process generating loading against Postgres:
 
 ```
-    pgbench -s 100 -c 10 -T 999999999 mytestdb
+    pgbench -c 10 -T 999999999 mytestdb
 ```
 
 If you want to stop the data loading, please run this in your installation directory:
