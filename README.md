@@ -37,7 +37,7 @@ Environment info:
 
 - Standby server:
     Hostname: standbydb
-    IP: 192.168.56.140
+    IP: 192.168.56.150
 ```
 
 
@@ -52,7 +52,7 @@ You can run pgbench process generating loading against Postgres:
 
     ## Initialize the database and start loading
     pgbench -i mytestdb 
-    pgbench -c 10 -T 999999999 mytestdb
+    nohup pgbench -c 10 -T 999999999 mytestdb &
 ```
 
 If you want to stop the data loading, please run this in your installation directory:
