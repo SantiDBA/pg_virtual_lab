@@ -52,7 +52,7 @@ echo 'INSTALLER: Environment variables set'
 
 # Download Oracle Software
 # if installer doesn't exist, download it
-db_installer='oracle-database-free-23c-1.0-1.el8.x86_64.rpm'
+db_installer='oracle-database-free-23ai-1.0-1.el8.x86_64.rpm'
 if [[ ! -f /vagrant/"${db_installer}" ]]; then
   echo 'INSTALLER: Downloading Oracle Database software'
   curl -Ls -o /vagrant/"${db_installer}" \
