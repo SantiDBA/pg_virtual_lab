@@ -36,14 +36,14 @@ echo "INSTALLER: System time zone set to $SYSTEM_TIMEZONE"
 
 # Install Oracle Database preinstall and openssl packages
 #dnf install -y oraclelinux-developer-release-el8
-#dnf install -y oracle-database-preinstall-23c openssl
+#dnf install -y oracle-database-preinstall-23ai openssl
 
 echo 'INSTALLER: Oracle preinstall and openssl complete'
 
 # set environment variables
 cat >> /home/oracle/.bashrc << EOF
 export ORACLE_BASE=/opt/oracle
-export ORACLE_HOME=/opt/oracle/product/23c/dbhomeFree
+export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
 export ORACLE_SID=FREE
 export PATH=\$PATH:\$ORACLE_HOME/bin
 EOF
