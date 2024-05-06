@@ -19,7 +19,7 @@ chown -R oracle:oinstall /u01
 # set environment variables
 cat >> /home/oracle/.bashrc << EOF
 export ORACLE_BASE=/opt/oracle
-export ORACLE_HOME=/opt/oracle/product/23c/dbhomeFree
+export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
 export ORACLE_SID=FREE
 export PATH=\$PATH:\$ORACLE_HOME/bin
 EOF

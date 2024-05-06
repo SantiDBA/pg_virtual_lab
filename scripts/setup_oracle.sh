@@ -41,12 +41,12 @@ echo "INSTALLER: System time zone set to $SYSTEM_TIMEZONE"
 echo 'INSTALLER: Oracle preinstall and openssl complete'
 
 # set environment variables
-cat >> /home/oracle/.bashrc << EOF
-export ORACLE_BASE=/opt/oracle
-export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
-export ORACLE_SID=FREE
-export PATH=\$PATH:\$ORACLE_HOME/bin
-EOF
+#cat >> /home/oracle/.bashrc << EOF
+#export ORACLE_BASE=/opt/oracle
+#export ORACLE_HOME=/opt/oracle/product/23ai/dbhomeFree
+#export ORACLE_SID=FREE
+#export PATH=\$PATH:\$ORACLE_HOME/bin
+#EOF
 
 echo 'INSTALLER: Environment variables set'
 
