@@ -79,13 +79,6 @@ This repository includes a `dba_academy` directory that contains several labs an
 
 The `dba_academy/labs` directory contains several labs that you can use to practice your DBA skills. Each lab has its own directory and includes a `README.md` file with instructions.
 
-### macOS Scripts
-
-The `dba_academy/setup` directory contains scripts for setting up and destroying the lab on macOS.
-
-*   `setup_lab_MAC.sh`: This script sets up the lab on macOS.
-*   `destroy_lab_MAC.sh`: This script destroys the lab on macOS.
-
 ## Cleanup
 
 To remove everything from your computer, you can just destroy the virtual machine: `vagrant destroy`
