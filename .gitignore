@@ -1,0 +1,2 @@
+.vagrant/
+git rm -r --cached .vagrant
